@@ -1,4 +1,5 @@
  local cmp = require'cmp'
+ local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
   cmp.setup({
     snippet = {
@@ -18,41 +19,25 @@
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-			['<Tab>'] = cmp.mapping(function(fallback)
+			['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
       else
         fallback()
       end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
+    end
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'luasnip' },   
-    }, {
-      { name = 'buffer' },
+			{ name = 'buffer'}
     })
   })
 
-  -- Set configuration for specific filetype.
-  cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-    }, {
-      { name = 'buffer' },
-    })
-  })
+	cmp.event:on(
+  'confirm_done',
+  	cmp_autopairs.on_confirm_done()
+	)
 
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline('/', {
@@ -78,3 +63,7 @@
   require('lspconfig')['pyright'].setup {
     capabilities = capabilities
   }
+  require('lspconfig')['tsserver'].setup {
+    capabilities = capabilities
+  }
+

@@ -20,14 +20,21 @@ return require('packer').startup(function(use)
   use 'glepnir/lspsaga.nvim' 	-- LSP UIs
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
-  use {
-    'nvim-treesitter/nvim-treesitter',
-  }
 
 	--icons
 	use 'kyazdani42/nvim-web-devicons'
 	--telescope
 	
+	--autopairs
+	use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+	}
+	use 'windwp/nvim-ts-autotag'
+	use {
+      'nvim-treesitter/nvim-treesitter',
+       run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  }
 
-	
+
 end)
