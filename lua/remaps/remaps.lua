@@ -15,3 +15,4 @@ map('n', 'x', '"_x')
 
 -- telescope remapings
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { silent=true })
+map('n', '<leader>fmt', '<cmd>Prettier<cr>', { silent=true })

@@ -40,8 +40,14 @@ return require('packer').startup(function(use)
        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
 
+	--html tags
 	use 'mattn/emmet-vim'
 
+
+	--prettier
+
+	use('jose-elias-alvarez/null-ls.nvim')
+	use('MunifTanjim/prettier.nvim')
 	
 
 
