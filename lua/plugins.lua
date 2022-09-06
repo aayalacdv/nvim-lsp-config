@@ -45,9 +45,15 @@ return require('packer').startup(function(use)
 
 
 	--prettier
-
-	use('jose-elias-alvarez/null-ls.nvim')
 	use('MunifTanjim/prettier.nvim')
+
+	--file-tree
+	use {
+  'kyazdani42/nvim-tree.lua',
+  requires = {
+    'kyazdani42/nvim-web-devicons', -- optional, for file icons
+  }
+}
 	
 
 

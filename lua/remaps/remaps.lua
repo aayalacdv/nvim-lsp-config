@@ -15,4 +15,18 @@ map('n', 'x', '"_x')
 
 -- telescope remapings
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { silent=true })
+
+--prettier
 map('n', '<leader>fmt', '<cmd>Prettier<cr>', { silent=true })
+
+--window management
+map('n', '<leader>qt', ':quit<cr>', { silent=true })
+
+
+-- tree navigation
+map('n', '<leader>tr', '<cmd>NvimTreeToggle<cr>', { silent=true })
+
+--saving files in all modes this is a test 
+map('n', '<C-s>', ':w<cr>', { silent=true })
+map('i', '<C-s>', '<Esc>:w<cr>i', { silent=true })
+

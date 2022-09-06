@@ -14,6 +14,7 @@ opt.swapfile = false
 opt.number = true
 opt.incsearch = true
 opt.hlsearch = false 
+opt.modifiable = true
 opt.wrap = false
 opt.shiftwidth = 2
 opt.tabstop = 2
